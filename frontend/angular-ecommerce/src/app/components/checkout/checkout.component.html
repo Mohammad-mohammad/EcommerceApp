@@ -49,11 +49,11 @@
                         <div class="col-md-2"><label>Country</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select  formControlName="country">
+                                <select formControlName="country">
                                     <option value="1">United States</option>
                                     <option value="2">India</option>
                                     <option value="3">Australia</option>
-                                </select> 
+                                </select>
                             </div>
                         </div>
 
@@ -83,11 +83,11 @@
                         <div class="col-md-2"><label>State</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select  formControlName="state">
+                                <select formControlName="state">
                                     <option value="1">United States</option>
                                     <option value="2">India</option>
                                     <option value="3">Australia</option>
-                                </select> 
+                                </select>
                             </div>
                         </div>
 
@@ -114,8 +114,8 @@
                         <span class="au-checkmark"></span> Shipping Address to Billing Address
                     </label>
                 </div>
-                    
-                        
+
+
 
                 <!-- Billing Address -->
 
@@ -126,11 +126,11 @@
                         <div class="col-md-2"><label>Country</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select  formControlName="country">
+                                <select formControlName="country">
                                     <option value="1">United States</option>
                                     <option value="2">India</option>
                                     <option value="3">Australia</option>
-                                </select> 
+                                </select>
                             </div>
                         </div>
 
@@ -160,11 +160,11 @@
                         <div class="col-md-2"><label>State</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select  formControlName="state">
+                                <select formControlName="state">
                                     <option value="1">United States</option>
                                     <option value="2">India</option>
                                     <option value="3">Australia</option>
-                                </select> 
+                                </select>
                             </div>
                         </div>
 
@@ -192,10 +192,10 @@
                         <div class="col-md-2"><label>Card Type</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select  formControlName="cardType">
+                                <select formControlName="cardType">
                                     <option value="1">Visa</option>
                                     <option value="2">Master Card</option>
-                                </select> 
+                                </select>
                             </div>
                         </div>
 
@@ -235,9 +235,11 @@
                         <div class="col-md-2"><label>Expiration Month</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select  formControlName="expirationMonth">
-                                    <option value="1">To Do</option>
-                                </select> 
+                                <select formControlName="expirationMonth">
+                                    <option *ngFor="let month of creditCardMonths">
+                                        {{ month }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
 
@@ -247,9 +249,11 @@
                         <div class="col-md-2"><label>Expiration Year</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select  formControlName="expirationYear">
-                                    <option value="1">To Do</option>
-                                </select> 
+                                <select formControlName="expirationYear" (change)="handleMonthAndYear($event)">
+                                    <option *ngFor="let year of creditCardYears">
+                                        {{ year }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
 
