@@ -15,7 +15,7 @@
                             <div class="input-space">
                                 <input type="text" formControlName="firstName">
                                 <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="alert alert-danger">
-                                    <div *ngIf="firstName?.errors?.['required']">First Name is required</div>    
+                                    <div *ngIf="firstName?.errors?.['required'] || firstName?.errors?.['notOnlyWhitespace']">First Name is required</div>    
                                     <div *ngIf="firstName?.errors?.['minlength']">First Name must be at least 2 characters long</div>    
 
                                 </div>
@@ -30,7 +30,7 @@
                             <div class="input-space">
                                 <input type="text" formControlName="lastName">
                                 <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="alert alert-danger">
-                                    <div *ngIf="lastName?.errors?.['required']">Last Name is required</div>    
+                                    <div *ngIf="lastName?.errors?.['required'] || firstName?.errors?.['notOnlyWhitespace']">Last Name is required</div>    
                                     <div *ngIf="lastName?.errors?.['minlength']">Last Name must be at least 2 characters long</div>    
 
                                 </div>

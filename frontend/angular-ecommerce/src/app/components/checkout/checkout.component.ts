@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ShopFormServiceService } from '../../services/shop-form-service.service';
 import { Country } from '../../common/country';
 import { State } from '../../common/state';
+import { ShopValidators } from '../../validators/shop-validators';
 
 @Component({
   selector: 'app-checkout',
@@ -32,8 +33,8 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.checkoutFormGroup = this.formBuilder.group({
         customer: this.formBuilder.group({
-          firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-          lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+          firstName: new FormControl('', [Validators.required, Validators.minLength(2), ShopValidators.notOnlyWhitespace]),
+          lastName: new FormControl('', [Validators.required, Validators.minLength(2), ShopValidators.notOnlyWhitespace]),
           email: new FormControl('', 
             [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]
           )
@@ -96,7 +97,7 @@ export class CheckoutComponent implements OnInit {
     if(this.checkoutFormGroup.invalid){
       this.checkoutFormGroup.markAllAsTouched();
     }
-    
+
     console.log(this.checkoutFormGroup.get('customer')?.value);
     console.log("The shipping address country is " + this.checkoutFormGroup.get('shippingAddress')?.value.country);
     console.log("The shipping address state is " + this.checkoutFormGroup.get('shippingAddress')?.value.state.name);
